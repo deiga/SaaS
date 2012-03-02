@@ -8,9 +8,9 @@ puts palindrome?("Abracadabra")
 
 def count_words(string)
 	count_hash = {}
-	string.downcase.scan(/\w+/).each { |x| count_hash[x] += 1 }
+	string.downcase.scan(/\w+/).each { |x| count_hash[x] ||= 0; count_hash[x] &&= count_hash[x] + 1 }
 	count_hash
 end
 
 puts count_words("A man, a plan, a canal -- Panama")
-puts count_words("Doo dee doo bee doo")
+puts count_words("Doo bee doo bee doo")
