@@ -44,3 +44,13 @@ end
 
 puts rps_game_winner([["Armando", "P"], ["Dave", "S"]])
 puts rps_game_winner([["Armando", "P"], ["Dave", "P"]])
+
+def rps_tournament_winner(tournament)
+	winners = Array.new
+	1.upto tournament.flatten.length {
+		winners << rps_game_winner(tournament.flatten.pop(2))
+	}
+	winners
+end
+
+puts rps_tournament_winner( [[[["Armando", "P"], ["Dave", "S"]], [["Richard", "R"], ["Michael", "S"]], ], [[["Allen", "S"], ["Omer", "P"]], [[ "David E.", "R"], ["Richard X.", "P"]]]])
