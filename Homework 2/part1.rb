@@ -27,3 +27,15 @@ puts 5.dollars.in(:yen)
 puts 5.euro.in(:dollar)
 puts 5.euro.in(:yen)
 puts 5.euro
+
+
+class String
+  def palindrome?()
+    self.gsub(/\W/,'').downcase == self.gsub(/\W/,'').downcase.reverse
+  end
+end
+
+
+puts "A man, a plan, a canal -- Panama".palindrome?
+puts "Madam, I'm Adam!".palindrome?
+puts "Abracadabra".palindrome?
