@@ -16,17 +16,16 @@ class Numeric
   	singular_currency = new_currency.to_s.gsub( /s$/, '')
   	if @@currencies.has_key?(singular_currency)
         @currency = singular_currency
-        self * @@currencies[singular_currency]
+        self / @@currencies[singular_currency]
     end
   end
 end
 
-puts 5.dollars.in(:euros)
-puts 5.dollars.in(:rupees)
-puts 5.dollars.in(:yen)
-puts 5.euro.in(:dollar)
-puts 5.euro.in(:yen)
-puts 5.euro
+puts 5.rupees.in(:dollars)
+puts 5.yen.in(:dollars)
+puts 5.euro.in(:dollars)
+puts 5.rupees.in(:yen)
+puts '---'
 
 
 class String
@@ -39,3 +38,11 @@ end
 puts "A man, a plan, a canal -- Panama".palindrome?
 puts "Madam, I'm Adam!".palindrome?
 puts "Abracadabra".palindrome?
+
+module Enumerable
+  def palindrome?()
+    self.to_s.gsub(/\W/,'').downcase == self.to_s.gsub(/\W/,'').downcase.reverse
+  end
+end
+
+puts [1,2,3,2,1].palindrome?
