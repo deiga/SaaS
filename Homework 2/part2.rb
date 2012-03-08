@@ -1,6 +1,14 @@
 class CartesianProduct
   include Enumerable
-  # your code here
+  def initialize(first_enum, second_enum)
+    @fst,@snd = first_enum, second_enum
+  end
+
+  def each
+    @fst.each do |a|
+      @snd.each { |b| yield [a,b]  }
+    end
+  end
 end
 
 c = CartesianProduct.new([:a,:b], [4,5])
