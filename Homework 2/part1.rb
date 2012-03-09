@@ -41,7 +41,7 @@ puts "Abracadabra".palindrome?
 
 module Enumerable
   def palindrome?()
-    self.to_a.to_s.gsub(/\W/,'').downcase == self.to_a.to_s.gsub(/\W/,'').downcase.reverse
+    self.to_a == self.to_a.reverse
   end
 end
 
